@@ -1,0 +1,419 @@
+:root {
+    --yt-bg: #0f0f0f;
+    --yt-surface: #181818;
+    --yt-card: #212121;
+    --yt-hover: #272727;
+    --yt-border: #303030;
+    
+    --yt-red: #ff0000;
+    --yt-red-hover: #d90000;
+    --yt-blue: #3ea6ff;
+    --yt-green: #2ba640;
+    
+    --text-primary: #f1f1f1;
+    --text-secondary: #aaaaaa;
+    --text-muted: #717171;
+    
+    --radius-pill: 9999px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--yt-bg);
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    width: 98vw;
+    height: 94vh;
+    max-width: 1500px;
+    background-color: var(--yt-bg);
+    border: 1px solid var(--yt-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.sidebar {
+    padding: 20px;
+    background-color: var(--yt-bg);
+    border-right: 1px solid var(--yt-border);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.sidebar-header .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 4px;
+}
+
+.yt-logo-icon {
+    width: 32px;
+    height: 22px;
+    background-color: var(--yt-red);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yt-logo-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.sidebar-header h2 span {
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.input-card {
+    background-color: var(--yt-surface);
+    border: 1px solid var(--yt-border);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-card label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.search-bar-wrapper input {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: #121212;
+    border: 1px solid var(--yt-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-bar-wrapper input:focus {
+    border-color: var(--yt-blue);
+}
+
+.yt-primary-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius-pill);
+    border: none;
+    background-color: var(--text-primary);
+    color: var(--yt-bg);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.yt-primary-btn:hover:not(:disabled) {
+    background-color: #d9d9d9;
+}
+
+button:disabled, input:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.video-preview {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#status-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: var(--yt-surface);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--yt-border);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--text-muted);
+}
+
+.dot.active {
+    background-color: var(--yt-red);
+    box-shadow: 0 0 6px var(--yt-red);
+}
+
+.status {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.iframe-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--yt-border);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--yt-surface);
+    height: 100%;
+    overflow: hidden; 
+}
+
+.chat-header {
+    padding: 14px 20px;
+    background-color: var(--yt-surface);
+    border-bottom: 1px solid var(--yt-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.header-title .subtitle {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.badge {
+    background-color: var(--yt-card);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    border: 1px solid var(--yt-border);
+}
+
+
+.chat-messages {
+    flex: 1 1 auto;
+    min-height: 0; 
+    padding: 16px 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.chat-messages::-webkit-scrollbar, .source-content::-webkit-scrollbar {
+    width: 8px;
+}
+.chat-messages::-webkit-scrollbar-thumb, .source-content::-webkit-scrollbar-thumb {
+    background: var(--yt-border);
+    border-radius: 4px;
+}
+
+
+.message {
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: pre-wrap; 
+}
+
+.system-msg {
+    background-color: var(--yt-card);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--yt-border);
+}
+
+.user-msg::before {
+    content: "You";
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--yt-green);
+    margin-bottom: 2px;
+}
+.user-msg {
+    background-color: #1a2a1d;
+    border-left: 3px solid var(--yt-green);
+    align-self: flex-end;
+    width: 85%;
+}
+
+.ai-msg::before {
+    content: "🤖 Gemini Context Bot ✓";
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--yt-blue);
+    margin-bottom: 2px;
+}
+.ai-msg {
+    background-color: var(--yt-card);
+    border-left: 3px solid var(--yt-blue);
+    align-self: flex-start;
+    width: 90%;
+}
+
+.source-box {
+    margin: 0 20px 10px 20px;
+    background-color: var(--yt-bg);
+    border: 1px solid var(--yt-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 0.8rem;
+}
+
+.source-box summary {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 500;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.source-box summary::-webkit-details-marker {
+    display: none;
+}
+
+.source-content {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--yt-border);
+    color: var(--text-secondary);
+    max-height: 120px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-bar-container {
+    padding: 12px 20px;
+    background-color: var(--yt-surface);
+    border-top: 1px solid var(--yt-border);
+}
+
+.chat-input-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--yt-green);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.input-wrapper {
+    flex: 1;
+}
+
+.chat-input-bar input {
+    width: 100%;
+    background-color: var(--yt-bg);
+    border: 1px solid var(--yt-border);
+    padding: 10px 14px;
+    border-radius: var(--radius-pill);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.chat-input-bar input:focus {
+    border-color: var(--text-secondary);
+}
+
+.yt-send-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--yt-hover);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.yt-send-btn:hover:not(:disabled) {
+    background-color: var(--yt-border);
+}
+
+.yt-send-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 2px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .app-container {
+        grid-template-columns: 1fr;
+        height: 100vh;
+        width: 100vw;
+        border-radius: 0;
+        border: none;
+    }
+}
