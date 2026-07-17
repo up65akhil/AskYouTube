@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube AI Context Assistant</title>
+    <!-- Google Fonts: Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Column: Video Setup & Player -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <div class="logo-area">
+                    <div class="yt-logo-icon">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <h2>RAG<span>Tube</span></h2>
+                </div>
+            </header>
+
+            <div class="input-card">
+                <label for="video-url">Add YouTube Video</label>
+                <div class="search-bar-wrapper">
+                    <input type="text" id="video-url" placeholder="Paste URL or Video ID (e.g., Gfr50f6ZBvo)" autocomplete="off">
+                </div>
+                <button id="process-btn" class="yt-primary-btn">
+                    <span>Connect Transcript</span>
+                </button>
+            </div>
+
+            <div class="video-preview">
+                <div id="status-container">
+                    <span id="status-dot" class="dot idle"></span>
+                    <p id="status-text" class="status">Waiting for video stream...</p>
+                </div>
+                <div class="iframe-container">
+                    <iframe id="video-embed" src="" allowfullscreen hidden></iframe>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Column: YouTube Live Chat Style -->
+        <main class="chat-container">
+            <header class="chat-header">
+                <div class="header-title">
+                    <h3>AI Live Chat</h3>
+                    <span class="subtitle">Top chat replay with Gemini context</span>
+                </div>
+                <span id="chunk-badge" class="badge hidden">0 Chunks Ready</span>
+            </header>
+
+            <!-- Chat message stream -->
+            <div id="chat-messages" class="chat-messages">
+                <div class="message system-msg">
+                    Welcome to the live chat! Connect a YouTube transcript on the left to start asking questions about the video.
+                </div>
+            </div>
+
+            <!-- FAISS Source Accordion -->
+            <details id="source-expander" class="source-box hidden">
+                <summary>
+                    <span class="summary-title">📑 View Retrieved Transcript Chunks</span>
+                    <span class="chevron">▼</span>
+                </summary>
+                <div id="source-content" class="source-content"></div>
+            </details>
+
+            <!-- Bottom Input Bar -->
+            <div class="input-bar-container">
+                <form id="chat-form" class="chat-input-bar">
+                    <div class="user-avatar-placeholder">You</div>
+                    <div class="input-wrapper">
+                        <input type="text" id="user-input" placeholder="Chat publicly with AI..." disabled required autocomplete="off">
+                    </div>
+                    <button type="submit" id="send-btn" class="yt-send-btn" disabled>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
